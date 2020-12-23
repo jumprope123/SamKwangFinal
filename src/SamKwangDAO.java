@@ -34,7 +34,7 @@ public class SamKwangDAO {
                         rs.getString(14),
                         Integer.parseInt(rs.getString(15)),
                         Integer.parseInt(rs.getString(16))
-                );// 9번째랑 12번째 컬럼에 인사번호가 중복이라
+                );
                     svs.add(sv);
             }
         } catch (SQLException throwables) {
@@ -61,6 +61,72 @@ public class SamKwangDAO {
                         Integer.parseInt(rs.getString(3)),
                         rs.getString(4),
                         rs.getString(5),
+                        rs.getString(6));
+                svs.add(sv);
+            }
+        } catch (SQLException throwables) {
+            System.out.println("SQL구문오류");
+        }
+        SamKwangJDBC.destroyConn(conn,pstmt,rs);
+        return svs;
+    }
+
+    public static SamKwangVO readOneCODP(int inputNo) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        SamKwangVO sv = null;
+
+        conn = SamKwangJDBC.makeConn();
+        try {
+            pstmt = conn.prepareStatement(SamKwangJDBC.readOneCODP);
+            pstmt.setInt(1,inputNo);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                    sv = new SamKwangVO(
+                            Integer.parseInt(rs.getString(1)),
+                            Integer.parseInt(rs.getString(2)),
+                            Integer.parseInt(rs.getString(3)),
+                            rs.getString(4),
+                            rs.getString(5),
+                            rs.getString(6),
+                            rs.getString(7),
+                            rs.getString(8),
+                            rs.getString(9),
+                            rs.getString(10),
+                            Integer.parseInt(rs.getString(11)),
+                            Integer.parseInt(rs.getString(12)),
+                            rs.getString(13),
+                            rs.getString(14),
+                            Integer.parseInt(rs.getString(15)),
+                            Integer.parseInt(rs.getString(16)));
+            }
+        } catch (SQLException throwables) {
+            System.out.println("SQL구문오류");
+        }
+        SamKwangJDBC.destroyConn(conn,pstmt,rs);
+        return sv;
+
+    }
+
+
+    public static SamKwangVO readOneSOE(int inputNo) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        SamKwangVO sv = null;
+        conn = SamKwangJDBC.makeConn();
+        try {
+            pstmt = conn.prepareStatement(SamKwangJDBC.readOneSOE);
+            pstmt.setInt(1,inputNo);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                sv = new SamKwangVO(
+                        Integer.parseInt(rs.getString(1)),
+                        Integer.parseInt(rs.getString(2)),
+                        Integer.parseInt(rs.getString(3)),
+                        rs.getString(4),
+                        rs.getString(5),
                         rs.getString(6),
                         rs.getString(7),
                         Integer.parseInt(rs.getString(8)),
@@ -69,12 +135,12 @@ public class SamKwangDAO {
                         rs.getString(11),
                         rs.getString(12),
                         rs.getString(13));
-                svs.add(sv);
             }
+
         } catch (SQLException throwables) {
-            System.out.println("SQL구문오류");
+            System.out.println("sql구문오류");
         }
         SamKwangJDBC.destroyConn(conn,pstmt,rs);
-        return svs;
+        return sv;
     }
 }

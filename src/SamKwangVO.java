@@ -1,28 +1,28 @@
 public class SamKwangVO {
-    int prodNo;
-    int orderNo;
-    int custNo;
-    String custName;
-    String addr;
-    String city;
-    String postNo;
-    String callNo;
-    String ordDate;
-    String dueDate;
-    int empNo;
-    int qnt;
-    String prodName;
-    String prodType;
-    int unitPrice;
-    int stock;
-    int expsId;
-    String expsName;
-    String empCall;
-    String personNo;
-    String name;
-    String dept;
-    String jobName;
-    String h_date;
+    private int prodNo;
+    private int orderNo;
+    private int custNo;
+    private String custName;
+    private String addr;
+    private String city;
+    private String postNo;
+    private String callNo;
+    private String ordDate;
+    private String dueDate;
+    private int empNo;
+    private int qnt;
+    private String prodName;
+    private String prodType;
+    private int unitPrice;
+    private int stock;
+    private int expsId;
+    private String expsName;
+    private String empCall;
+    private String personNo;
+    private String name;
+    private String dept;
+    private String jobName;
+    private String h_date;
 
 
     public SamKwangVO() {
@@ -47,19 +47,24 @@ public class SamKwangVO {
         this.stock = stock;
     }
 
-    public SamKwangVO(int empNo, int orderNo, int expsId, String expsName, String empCall,  String ordDate, String dueDate, int custNo, String personNo, String name, String dept, String jobName, String h_date) {
+
+    public SamKwangVO(int empNo,int orderNo,  int expsId,  String expsName, String ordDate,   String jobName) {
         this.orderNo = orderNo;
-        this.custNo = custNo;
         this.ordDate = ordDate;
-        this.dueDate = dueDate;
         this.empNo = empNo;
         this.expsId = expsId;
         this.expsName = expsName;
+        this.jobName = jobName;
+    }
+
+    public SamKwangVO(int empNo, int orderNo, int expsId, String expsName, String empCall, String ordDate, String dueDate, int custNo, String personNo, String name, String dept, String jobName, String h_date) {
+        this(empNo,orderNo,expsId,expsName,ordDate,jobName);
+        this.custNo = custNo;
+        this.dueDate = dueDate;
         this.empCall = empCall;
         this.personNo = personNo;
         this.name = name;
         this.dept = dept;
-        this.jobName = jobName;
         this.h_date = h_date;
     }
 
